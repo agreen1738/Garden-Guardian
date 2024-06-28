@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6yh42c61a7bu"]
+
+[ext_resource type="Texture2D" uid="uid://p2urlytnmngu" path="res://Assets/icon.svg" id="1_05mml"]
+
+[node name="Plant_Place_Holder" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0, 6.183, 0, 1)
+texture = ExtResource("1_05mml")
