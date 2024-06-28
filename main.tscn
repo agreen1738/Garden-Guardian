@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=5 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://Assets/BackGround.png" id="1_dyqc0"]
 [ext_resource type="Script" path="res://Farmer.gd" id="2_sedwv"]
+[ext_resource type="Script" path="res://Enemy.gd" id="3_7dr6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjr8m"]
-size = Vector2(80, 80)
+size = Vector2(40, 40)
 
 [node name="BackGround" type="Sprite2D"]
 texture = ExtResource("1_dyqc0")
 centered = false
 
 [node name="Farmer" type="CharacterBody2D" parent="."]
+top_level = true
 position = Vector2(576, 162)
 script = ExtResource("2_sedwv")
 
@@ -20,13 +22,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.563096, 0.561003, 3.85046e-07, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
+shape = SubResource("RectangleShape2D_bjr8m")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(40, 40)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("3_7dr6a")
+
+[node name="ColorRect" type="ColorRect" parent="Enemy"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.173138, 0.469348, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_bjr8m")
