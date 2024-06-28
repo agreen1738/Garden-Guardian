@@ -1,7 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=4 format=3 uid="uid://cy10mwhwsb8sg"]
 
-[ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://BackGround.png" id="1_dyqc0"]
+[ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://Assets/BackGround.png" id="1_dyqc0"]
+[ext_resource type="Script" path="res://Farmer.gd" id="2_sedwv"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjr8m"]
+size = Vector2(80, 80)
+
+[node name="BackGround" type="Sprite2D"]
 texture = ExtResource("1_dyqc0")
 centered = false
+
+[node name="Farmer" type="CharacterBody2D" parent="."]
+position = Vector2(576, 162)
+script = ExtResource("2_sedwv")
+
+[node name="ColorRect" type="ColorRect" parent="Farmer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.563096, 0.561003, 3.85046e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
+shape = SubResource("RectangleShape2D_bjr8m")
