@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy10mwhwsb8sg"]
+
+[ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://BackGround.png" id="1_dyqc0"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_dyqc0")
+centered = false
