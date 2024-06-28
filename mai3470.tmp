@@ -1,26 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=9 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://Assets/BackGround.png" id="1_dyqc0"]
+[ext_resource type="Script" path="res://main.gd" id="2_mwvxn"]
 [ext_resource type="Script" path="res://Farmer.gd" id="2_sedwv"]
 [ext_resource type="Texture2D" uid="uid://cju6cq7xirxea" path="res://Assets/Farmer.png" id="3_sxsup"]
 [ext_resource type="Script" path="res://CropPlot.gd" id="4_7umyq"]
 
-[sub_resource type="GDScript" id="GDScript_c04ua"]
-script/source = "extends Sprite2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjr8m"]
 size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdgno"]
+size = Vector2(436, 247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jut4o"]
 size = Vector2(140, 77)
@@ -28,7 +18,11 @@ size = Vector2(140, 77)
 [node name="BackGround" type="Sprite2D"]
 texture = ExtResource("1_dyqc0")
 centered = false
-script = SubResource("GDScript_c04ua")
+script = ExtResource("2_mwvxn")
+
+[node name="grabTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [node name="Farmer" type="CharacterBody2D" parent="." groups=["Farmer"]]
 top_level = true
@@ -37,7 +31,6 @@ collision_mask = 2
 script = ExtResource("2_sedwv")
 
 [node name="ColorRect" type="ColorRect" parent="Farmer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -61,7 +54,7 @@ texture = ExtResource("3_sxsup")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
 shape = SubResource("RectangleShape2D_bjr8m")
 
-[node name="Garden" type="Node2D" parent="."]
+[node name="Garden" type="Area2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Garden"]
 offset_left = 353.0
@@ -69,6 +62,10 @@ offset_top = 211.0
 offset_right = 789.0
 offset_bottom = 458.0
 color = Color(0.552441, 0.37511, 0.125947, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garden"]
+position = Vector2(571, 334.5)
+shape = SubResource("RectangleShape2D_qdgno")
 
 [node name="CropPlot" type="Area2D" parent="Garden"]
 collision_layer = 2
@@ -85,17 +82,12 @@ color = Color(0.322203, 0.212294, 0.0554313, 1)
 position = Vector2(427, 415.5)
 shape = SubResource("RectangleShape2D_jut4o")
 
-[node name="grabTimer" type="Timer" parent="Garden/CropPlot"]
-wait_time = 3.0
-one_shot = true
-
 [node name="growthTimer" type="Timer" parent="Garden/CropPlot"]
 wait_time = 5.0
 autostart = true
 
 [connection signal="area_shape_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_area_shape_exited"]
+[connection signal="body_entered" from="Garden/CropPlot" to="." method="_on_crop_plot_body_entered"]
 [connection signal="body_entered" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_entered"]
 [connection signal="body_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_exited"]
-[connection signal="timeout" from="Garden/CropPlot/grabTimer" to="Garden/CropPlot" method="_on_grab_timer_timeout"]
-[connection signal="timeout" from="Garden/CropPlot/grabTimer" to="." method="_on_grab_timer_timeout"]
 [connection signal="timeout" from="Garden/CropPlot/growthTimer" to="Garden/CropPlot" method="_on_growth_timer_timeout"]
