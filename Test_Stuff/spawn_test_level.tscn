@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jr72nku8cs6e"]
+[gd_scene load_steps=5 format=3 uid="uid://jr72nku8cs6e"]
 
 [ext_resource type="PackedScene" uid="uid://bqg86jyouvfwc" path="res://Assets/Prefabs/spawner.tscn" id="1_nnogh"]
 [ext_resource type="Script" path="res://Test_Stuff/spawn_test_level.gd" id="1_uggg5"]
 [ext_resource type="PackedScene" uid="uid://b6yh42c61a7bu" path="res://Test_Stuff/plant_place_holder.tscn" id="3_7ef1x"]
+[ext_resource type="PackedScene" uid="uid://0k88wgttxfla" path="res://Assets/Prefabs/spawner_manager.tscn" id="4_mtuy5"]
 
 [node name="Spawn_Test_Level" type="Node2D"]
 script = ExtResource("1_uggg5")
@@ -16,6 +17,14 @@ position = Vector2(296, 145)
 position = Vector2(-7, -2)
 
 [node name="Timer_Spawn" type="Timer" parent="."]
+
+[node name="spawner_manager" parent="." instance=ExtResource("4_mtuy5")]
+
+[node name="Plant_Place_Holder2" parent="." instance=ExtResource("3_7ef1x")]
+position = Vector2(139, -28)
+
+[node name="Plant_Place_Holder3" parent="." instance=ExtResource("3_7ef1x")]
+position = Vector2(-128, 87)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="timeout" from="Timer_Spawn" to="." method="_on_timer_spawn_timeout"]

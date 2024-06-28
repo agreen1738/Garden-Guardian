@@ -11,6 +11,6 @@ func _on_child_entered_tree(node):
 	if node is spawner:
 		spawner_array.append(node)
 
-
-func _on_timer_spawn_timeout():
-	spawner_array.pick_random().spawn(plant)
+#
+#func _on_timer_spawn_timeout():
+	#spawner_array.pick_random().spawn(plant)
