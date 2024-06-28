@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 150.0
 var p_height : int
 var win_height: int
 var p_width : int
