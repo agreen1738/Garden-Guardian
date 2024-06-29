@@ -1,21 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=8 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://Assets/BackGround.png" id="1_dyqc0"]
 [ext_resource type="Script" path="res://main.gd" id="2_q60ld"]
 [ext_resource type="Script" path="res://Farmer.gd" id="2_sedwv"]
 [ext_resource type="Texture2D" uid="uid://cju6cq7xirxea" path="res://Assets/Farmer.png" id="3_sxsup"]
 [ext_resource type="Script" path="res://CropPlot.gd" id="4_7umyq"]
-[ext_resource type="Script" path="res://SellArea.gd" id="6_bl62t"]
-[ext_resource type="FontFile" uid="uid://1wggeck4w87o" path="res://Assets/DePixelHalbfett.ttf" id="7_lxima"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjr8m"]
 size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jut4o"]
 size = Vector2(140, 77)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_242r1"]
-size = Vector2(64, 128)
 
 [node name="BackGround" type="Sprite2D"]
 texture = ExtResource("1_dyqc0")
@@ -85,55 +80,9 @@ one_shot = true
 wait_time = 5.0
 autostart = true
 
-[node name="SellArea" type="Area2D" parent="."]
-collision_layer = 2
-script = ExtResource("6_bl62t")
-
-[node name="ColorRect" type="ColorRect" parent="SellArea"]
-offset_left = 1048.0
-offset_top = 256.0
-offset_right = 1112.0
-offset_bottom = 384.0
-
-[node name="Bin" type="CollisionShape2D" parent="SellArea"]
-position = Vector2(1080, 320)
-shape = SubResource("RectangleShape2D_242r1")
-
-[node name="Label" type="Label" parent="SellArea"]
-texture_filter = 1
-offset_left = 1096.0
-offset_top = 304.0
-offset_right = 1132.0
-offset_bottom = 327.0
-rotation = 1.5708
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "SELL"
-
-[node name="checkBox" type="Timer" parent="SellArea"]
-wait_time = 0.001
-one_shot = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 128.0
-offset_top = 40.0
-offset_right = 339.0
-offset_bottom = 81.0
-theme_override_colors/font_color = Color(0, 0.439216, 0, 1)
-theme_override_fonts/font = ExtResource("7_lxima")
-theme_override_font_sizes/font_size = 32
-text = "Money: 0"
-
 [connection signal="area_shape_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_area_shape_exited"]
 [connection signal="body_entered" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_entered"]
 [connection signal="body_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_exited"]
-[connection signal="crop_gathered" from="Garden/CropPlot" to="." method="_on_crop_plot_crop_gathered"]
 [connection signal="timeout" from="Garden/CropPlot/grabTimer" to="." method="_on_grab_timer_timeout"]
 [connection signal="timeout" from="Garden/CropPlot/grabTimer" to="Garden/CropPlot" method="_on_grab_timer_timeout"]
 [connection signal="timeout" from="Garden/CropPlot/growthTimer" to="Garden/CropPlot" method="_on_growth_timer_timeout"]
-[connection signal="body_entered" from="SellArea" to="." method="_on_sell_area_body_entered"]
-[connection signal="body_entered" from="SellArea" to="SellArea" method="_on_body_entered"]
-[connection signal="body_exited" from="SellArea" to="SellArea" method="_on_body_exited"]
-[connection signal="has_crop" from="SellArea" to="." method="_on_sell_area_has_crop"]
-[connection signal="timeout" from="SellArea/checkBox" to="SellArea" method="_on_check_box_timeout"]
