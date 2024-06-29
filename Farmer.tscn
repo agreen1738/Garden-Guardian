@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmsgm8m2vvcq8" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer.png" id="2_ksf6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422vs"]
-size = Vector2(38, 21)
+size = Vector2(37, 22.5)
 
 [sub_resource type="Animation" id="Animation_k5e5l"]
 length = 0.001
@@ -260,7 +260,7 @@ vframes = 4
 frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14)
+position = Vector2(0.5, 14.75)
 shape = SubResource("RectangleShape2D_422vs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -277,7 +277,7 @@ parameters/Walk/blend_position = Vector2(-0.0012005, 0.137966)
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 show_behind_parent = true
-offset_left = -19.0
-offset_top = -25.0
-offset_right = 19.0
-offset_bottom = 25.0
+offset_left = -25.0
+offset_top = -32.0
+offset_right = 25.0
+offset_bottom = 28.0
