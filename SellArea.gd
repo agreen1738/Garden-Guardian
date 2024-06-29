@@ -24,5 +24,6 @@ func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
 		print("Farmer exited SellArea")
 		farmer_present = false
+		$Label.hide()
 		$checkBox.stop()
 

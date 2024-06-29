@@ -18,7 +18,6 @@ func _ready():
 
 func _on_grab_timer_timeout():
 	if farmer_present:
-		print("Gathered Plant")
 		emit_signal("crop_gathered")
 		return true
 
@@ -49,7 +48,7 @@ func updateCropAppearance():
 			sprite.modulate = Color(0.3, 0.6, 0.3)
 
 func _on_body_entered(body):
-	if body.is_in_group("Farmer"):
+	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
 		print("Farmer entered CropPlot")
 		farmer_present = true
 		$grabTimer.start()
