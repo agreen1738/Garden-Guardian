@@ -1,8 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://1t7cejragwav"]
+[gd_scene load_steps=25 format=3 uid="uid://1t7cejragwav"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy_basic.gd" id="1_874p6"]
 [ext_resource type="Texture2D" uid="uid://cfubg3bd4n32j" path="res://Assets/Art/Enemies/Angry_Pig/lil_guy-Sheet.png" id="2_634uy"]
 [ext_resource type="Texture2D" uid="uid://daogbaenlli7i" path="res://Assets/Art/Enemies/Angry_Pig/Run (36x30).png" id="3_ip1s3"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/state_machine.gd" id="4_yph5d"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/EnemyIdle.gd" id="5_fnsfk"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/EnemySeek.gd" id="6_y1h1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kabey"]
 atlas = ExtResource("2_634uy")
@@ -130,8 +133,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivel4"]
-radius = 4.2
-height = 15.6
+radius = 14.5
+height = 37.0
 
 [node name="Enemy_Basic" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -144,5 +147,20 @@ frame = 8
 frame_progress = 0.980687
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ivel4")
+
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_yph5d")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node2D" parent="State_Machine" node_paths=PackedStringArray("enemy_mob")]
+script = ExtResource("5_fnsfk")
+enemy_mob = NodePath("../..")
+
+[node name="EnemySeek" type="Node2D" parent="State_Machine" node_paths=PackedStringArray("enemy_mob")]
+scale = Vector2(2, 2)
+script = ExtResource("6_y1h1m")
+enemy_mob = NodePath("../..")
+move_speed = 10.0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw450n72qrhvk"]
+
+[ext_resource type="Texture2D" uid="uid://p3jnhesxypnu" path="res://Assets/Art/Props/light_source.png" id="1_m74mi"]
+[ext_resource type="Texture2D" uid="uid://bouvpl8r11u7l" path="res://Assets/Art/Props/Lantern_Hanged_On.png" id="2_md86x"]
+[ext_resource type="Script" path="res://Assets/Scripts/light_basic.gd" id="2_yvlvh"]
+
+[node name="Light_Basic" type="PointLight2D"]
+scale = Vector2(0.25, 0.25)
+energy = 0.87
+texture = ExtResource("1_m74mi")
+texture_scale = 7.21
+script = ExtResource("2_yvlvh")
+
+[node name="LanternHangedOn" type="Sprite2D" parent="."]
+position = Vector2(-86, 132)
+scale = Vector2(5, 5)
+texture = ExtResource("2_md86x")
+
+[node name="Timer_Flicker" type="Timer" parent="."]
+wait_time = 2.02
+
+[connection signal="timeout" from="Timer_Flicker" to="." method="_on_timer_flicker_timeout"]

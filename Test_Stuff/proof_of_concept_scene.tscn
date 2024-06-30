@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://oj7pmrtasgjg"]
+[gd_scene load_steps=37 format=3 uid="uid://oj7pmrtasgjg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_l041t"]
 [ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Farmer.tscn" id="2_eyujy"]
@@ -16,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://d1qjlydeiei1l" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Plants.png" id="14_67xgb"]
 [ext_resource type="Texture2D" uid="uid://dfbcgc3mb1014" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="15_6imkv"]
 [ext_resource type="Texture2D" uid="uid://5y8t451y6yjl" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Free_Chicken_House.png" id="16_2m71c"]
-[ext_resource type="PackedScene" uid="uid://bqg86jyouvfwc" path="res://Assets/Prefabs/spawner.tscn" id="17_nyhlf"]
-[ext_resource type="PackedScene" uid="uid://0k88wgttxfla" path="res://Assets/Prefabs/spawner_manager.tscn" id="18_li1oa"]
 [ext_resource type="PackedScene" uid="uid://b6yh42c61a7bu" path="res://Test_Stuff/plant_place_holder.tscn" id="19_yplpv"]
+[ext_resource type="Script" path="res://Assets/Scripts/Day_Night_Modulate.gd" id="20_4rn3o"]
+[ext_resource type="PackedScene" uid="uid://1t7cejragwav" path="res://Assets/Prefabs/enemy_basic.tscn" id="20_8bjob"]
+[ext_resource type="PackedScene" uid="uid://dw450n72qrhvk" path="res://Assets/Prefabs/light_basic.tscn" id="21_avu5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jut4o"]
 size = Vector2(153, 84)
@@ -2149,40 +2150,20 @@ layer_7/name = "Trees Front"
 layer_7/z_index = 10
 layer_7/tile_data = PackedInt32Array()
 
-[node name="Spawner" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(1218, 199)
-
-[node name="Spawner2" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(1209, 421)
-
-[node name="Spawner3" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(-104, 204)
-
-[node name="Spawner4" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(-118, 398)
-
-[node name="Spawner5" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(279, 706)
-
-[node name="Spawner6" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(834, 704)
-
-[node name="Spawner7" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(567, 703)
-
-[node name="Spawner8" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(246, -40)
-
-[node name="Spawner9" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(576, -34)
-
-[node name="Spawner10" parent="." instance=ExtResource("17_nyhlf")]
-position = Vector2(885, -39)
-
-[node name="spawner_manager" parent="." instance=ExtResource("18_li1oa")]
-
 [node name="Plant_Place_Holder" parent="." instance=ExtResource("19_yplpv")]
 position = Vector2(665, 337)
+
+[node name="Day_Night_Modulate" type="CanvasModulate" parent="."]
+color = Color(0.114897, 0.114897, 0.114897, 1)
+script = ExtResource("20_4rn3o")
+
+[node name="Light_Basic" parent="." instance=ExtResource("21_avu5p")]
+position = Vector2(920, 190)
+energy = 1.0
+texture_scale = 16.0
+
+[node name="Enemy_Basic" parent="." instance=ExtResource("20_8bjob")]
+position = Vector2(895, 472)
 
 [connection signal="area_shape_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_area_shape_exited"]
 [connection signal="body_entered" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_entered"]
