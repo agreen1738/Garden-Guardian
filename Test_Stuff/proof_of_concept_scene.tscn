@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvvqxf6tctu1j"]
+
+[ext_resource type="Texture2D" uid="uid://cd13um1yrha7v" path="res://Assets/BackGround.png" id="1_2c32c"]
+[ext_resource type="Script" path="res://Farmer.gd" id="2_rnucn"]
+[ext_resource type="Texture2D" uid="uid://cju6cq7xirxea" path="res://Assets/Farmer.png" id="3_t8nmq"]
+[ext_resource type="Script" path="res://CropPlot.gd" id="4_ava3h"]
+[ext_resource type="PackedScene" uid="uid://0k88wgttxfla" path="res://Assets/Prefabs/spawner_manager.tscn" id="5_pe16n"]
+[ext_resource type="PackedScene" uid="uid://bqg86jyouvfwc" path="res://Assets/Prefabs/spawner.tscn" id="6_t2f4l"]
+[ext_resource type="PackedScene" uid="uid://b6yh42c61a7bu" path="res://Test_Stuff/plant_place_holder.tscn" id="7_lyjlg"]
+
+[sub_resource type="GDScript" id="GDScript_c04ua"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjr8m"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jut4o"]
+size = Vector2(140, 77)
+
+[node name="BackGround" type="Sprite2D"]
+texture = ExtResource("1_2c32c")
+centered = false
+script = SubResource("GDScript_c04ua")
+
+[node name="Farmer" type="CharacterBody2D" parent="." groups=["Farmer"]]
+top_level = true
+position = Vector2(576, 100)
+collision_mask = 2
+script = ExtResource("2_rnucn")
+
+[node name="ColorRect" type="ColorRect" parent="Farmer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.563096, 0.561003, 3.85046e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Farmer"]
+texture_filter = 1
+position = Vector2(-4.29153e-06, -4.29153e-06)
+scale = Vector2(3.11111, 3.11111)
+texture = ExtResource("3_t8nmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
+shape = SubResource("RectangleShape2D_bjr8m")
+
+[node name="Garden" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Garden"]
+offset_left = 353.0
+offset_top = 211.0
+offset_right = 789.0
+offset_bottom = 458.0
+color = Color(0.552441, 0.37511, 0.125947, 1)
+
+[node name="CropPlot" type="Area2D" parent="Garden"]
+collision_layer = 2
+script = ExtResource("4_ava3h")
+
+[node name="ColorRect" type="ColorRect" parent="Garden/CropPlot"]
+offset_left = 357.0
+offset_top = 377.0
+offset_right = 497.0
+offset_bottom = 454.0
+color = Color(0.322203, 0.212294, 0.0554313, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garden/CropPlot"]
+position = Vector2(427, 415.5)
+shape = SubResource("RectangleShape2D_jut4o")
+
+[node name="grabTimer" type="Timer" parent="Garden/CropPlot"]
+wait_time = 3.0
+one_shot = true
+
+[node name="growthTimer" type="Timer" parent="Garden/CropPlot"]
+wait_time = 5.0
+autostart = true
+
+[node name="spawner_manager" parent="." instance=ExtResource("5_pe16n")]
+
+[node name="Spawner" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(-63, 28)
+
+[node name="Spawner2" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(-65, 206)
+
+[node name="Spawner3" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(-68, 491)
+
+[node name="Spawner4" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(1197, 28)
+
+[node name="Spawner5" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(1205, 225)
+
+[node name="Spawner6" parent="." instance=ExtResource("6_t2f4l")]
+position = Vector2(1201, 464)
+
+[node name="Plant_Place_Holder" parent="." instance=ExtResource("7_lyjlg")]
+position = Vector2(604, 334)
+
+[connection signal="area_shape_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_area_shape_exited"]
+[connection signal="body_entered" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_entered"]
+[connection signal="body_exited" from="Garden/CropPlot" to="Garden/CropPlot" method="_on_body_exited"]
+[connection signal="timeout" from="Garden/CropPlot/grabTimer" to="." method="_on_grab_timer_timeout"]
+[connection signal="timeout" from="Garden/CropPlot/grabTimer" to="Garden/CropPlot" method="_on_grab_timer_timeout"]
+[connection signal="timeout" from="Garden/CropPlot/growthTimer" to="Garden/CropPlot" method="_on_growth_timer_timeout"]
