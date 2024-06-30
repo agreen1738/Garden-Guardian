@@ -20,4 +20,3 @@ func spawn(target):
 	if enemy_mob is enemy:
 		enemy_mob.set_target(target)
 	get_parent().add_child(enemy_mob)
-	print("Spawn something")

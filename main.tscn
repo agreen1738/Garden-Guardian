@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Script" path="res://main.gd" id="2_q60ld"]
-[ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Farmer.tscn" id="3_6evbk"]
+[ext_resource type="PackedScene" path="res://Farmer.tscn" id="3_6evbk"]
 [ext_resource type="Script" path="res://CropPlot.gd" id="4_7umyq"]
 [ext_resource type="Texture2D" uid="uid://nkuhol5m0bh2" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/crops.png" id="4_pjpv6"]
 [ext_resource type="Script" path="res://SellArea.gd" id="6_bl62t"]

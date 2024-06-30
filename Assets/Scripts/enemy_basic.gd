@@ -1,6 +1,6 @@
 extends enemy
 
-@export var speed = 400
+@export var speed = 250
 @export var accel = 7
 @export var damage = 10
 
@@ -17,7 +17,11 @@ func _physics_process(delta):
 		print("Enemy has no player reference!")
 		pass
 	else:
+		if not is_target_to_the_left():
+			anim.flip_h = true
 		direction = (target_body.global_position - global_position).normalized()
-		look_at(target_body.position)
 		velocity = velocity.lerp(direction * speed, accel * delta)
 		move_and_slide()
+
+func is_target_to_the_left():
+	return target_body.position.x < position.x
