@@ -15,14 +15,12 @@ func _on_check_box_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_body_entered(body):
 	if body.is_in_group("Farmer"):
-		print("Farmer entered SellArea")
 		farmer_present = true
 		$checkBox.start()
 
 
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
-		print("Farmer exited SellArea")
 		farmer_present = false
 		$Label.hide()
 		$checkBox.stop()

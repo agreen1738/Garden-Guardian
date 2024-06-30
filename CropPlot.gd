@@ -8,7 +8,6 @@ const STAGE_YOUNG_PLANT = 3
 const STAGE_MATURE_PLANT = 4
 
 var currentStage = STAGE_SEEDLING
-var sprite
 var farmer_present = false
 
 func _ready():
@@ -65,6 +64,7 @@ func updateCropAppearance():
 
 func _on_body_entered(body):
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
+		print("Gathering")
 		farmer_present = true
 		$grabTimer.start()
 

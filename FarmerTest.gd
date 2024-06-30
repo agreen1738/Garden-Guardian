@@ -3,10 +3,10 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0,1)
 @export var move_speed : float = 250  # Adjust movement speed as needed
 
-var p_height : int
-var win_height: int
-var p_width : int
-var win_width : int
+var p_height : float
+var win_height: float
+var p_width : float
+var win_width : float
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -20,9 +20,9 @@ func _ready():
 	p_width = $ColorRect.get_size().x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	position.x = clamp(position.x, p_width / 2, win_width - p_width / 2)
-	position.y = clamp(position.y, p_height / 2, win_height - p_height / 2)
+func _physics_process(_delta):
+	position.x = clamp(position.x, -539, 556)
+	position.y = clamp(position.y, -280, 280)
 	var input_direction = Vector2(
 	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
