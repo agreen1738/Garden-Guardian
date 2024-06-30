@@ -12,7 +12,6 @@ var sprite
 var farmer_present = false
 
 func _ready():
-	print("ready")
 	startGrowth()
 	$grabTimer.start()
 	updateCropAppearance()
@@ -26,7 +25,6 @@ func _on_grab_timer_timeout():
 
 func startGrowth():
 	$growthTimer.start()
-	print("End of startGrowth")
 
 func _on_growth_timer_timeout():
 	match currentStage:
@@ -49,34 +47,28 @@ func updateCropAppearance():
 			$stage1.hide()
 			$stage2.hide()
 			$stage3.hide()
-			print("in noseed")
 			startGrowth()
 		STAGE_SEEDLING:
 			$stage1.show()
 			$stage2.hide()
 			$stage3.hide()
-			print("in seedling")
 			startGrowth()
 		STAGE_YOUNG_PLANT:
 			$stage1.hide()
 			$stage2.show()
 			$stage3.hide()
-			print("in young")
 			startGrowth()
 		STAGE_MATURE_PLANT:
 			$stage1.hide()
 			$stage2.hide()
 			$stage3.show()
-			print("in mature")
 
 func _on_body_entered(body):
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
-		print("Farmer entered CropPlot")
 		farmer_present = true
 		$grabTimer.start()
 
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
-		print("Farmer exited CropPlot")
 		farmer_present = false
 		$grabTimer.stop()
