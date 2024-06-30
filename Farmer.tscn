@@ -248,6 +248,7 @@ states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fpxr6"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rxq60"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fbngm")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Farmer"]]
+position = Vector2(544, 240)
 collision_mask = 2
 script = ExtResource("1_qndbs")
 
