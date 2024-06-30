@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmsgm8m2vvcq8" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer.png" id="2_ksf6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422vs"]
-size = Vector2(37, 22.5)
+size = Vector2(37, 24.25)
 
 [sub_resource type="Animation" id="Animation_k5e5l"]
 length = 0.001
@@ -248,12 +248,11 @@ states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fpxr6"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rxq60"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fbngm")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Farmer"]]
-position = Vector2(544, 240)
-collision_mask = 2
 script = ExtResource("1_qndbs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(567, 314)
 scale = Vector2(3.11111, 3.11111)
 texture = ExtResource("2_ksf6g")
 hframes = 4
@@ -261,7 +260,7 @@ vframes = 4
 frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 14.75)
+position = Vector2(566, 331.125)
 shape = SubResource("RectangleShape2D_422vs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -278,7 +277,14 @@ parameters/Walk/blend_position = Vector2(-0.0012005, 0.137966)
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 show_behind_parent = true
-offset_left = -25.0
-offset_top = -32.0
-offset_right = 25.0
-offset_bottom = 28.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 543.0
+offset_top = 280.0
+offset_right = 593.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
