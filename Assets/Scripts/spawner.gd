@@ -12,11 +12,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
+## Spawns the first element element in resources. Prelim implementation; will hopefully handle more than one 'enemy'
 func spawn(target):
 	var enemy_mob = enemy_array[0].instantiate()
 	enemy_mob.global_position = global_position
 	if enemy_mob is enemy:
-		enemy_mob.set_target(target.position)
+		enemy_mob.set_target(target)
 	get_parent().add_child(enemy_mob)
-	print("Spawn something")

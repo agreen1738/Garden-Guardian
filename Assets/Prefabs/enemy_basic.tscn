@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://1t7cejragwav"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/enemy_basic.gd" id="1_874p6"]
+[ext_resource type="Texture2D" uid="uid://cfubg3bd4n32j" path="res://Assets/Art/Enemies/Angry_Pig/lil_guy-Sheet.png" id="2_634uy"]
+[ext_resource type="Texture2D" uid="uid://daogbaenlli7i" path="res://Assets/Art/Enemies/Angry_Pig/Run (36x30).png" id="3_ip1s3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kabey"]
+atlas = ExtResource("2_634uy")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw7jy"]
+atlas = ExtResource("2_634uy")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40wan"]
+atlas = ExtResource("2_634uy")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqrdy"]
+atlas = ExtResource("2_634uy")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eni8o"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(0, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cswxu"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(36, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkjoo"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(72, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjere"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(108, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ieg4"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(144, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oemss"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(180, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xe0v"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(216, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3jpy"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(252, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w8g0"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(288, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mduw0"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(324, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iuk0"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(360, 0, 36, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikg4r"]
+atlas = ExtResource("3_ip1s3")
+region = Rect2(396, 0, 36, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24yqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kabey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw7jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40wan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqrdy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eni8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cswxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkjoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjere")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ieg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oemss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xe0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3jpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w8g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mduw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iuk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikg4r")
+}],
+"loop": true,
+"name": &"run",
+"speed": 18.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivel4"]
+radius = 4.2
+height = 15.6
+
+[node name="Enemy_Basic" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_874p6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_24yqe")
+animation = &"run"
+frame = 8
+frame_progress = 0.980687
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ivel4")
