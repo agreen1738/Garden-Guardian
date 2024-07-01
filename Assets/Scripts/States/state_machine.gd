@@ -2,6 +2,7 @@ extends Node
 class_name State_Machine
 
 @export var initial_state : State
+@export var player: CharacterBody2D
 
 var current_state : State
 var states : Dictionary = {}
@@ -10,6 +11,8 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
+			var initializer = State_Initializer.new()
+			initializer.farmer
 			child.Transitioned.connect(on_child_transition)
 	
 	if initial_state:
