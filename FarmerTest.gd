@@ -8,6 +8,7 @@ var win_height: float
 var p_width : float
 var win_width : float
 
+
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
@@ -20,7 +21,7 @@ func _ready():
 	p_width = $ColorRect.get_size().x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
+func _physics_process(delta):
 	position.x = clamp(position.x, -539, 556)
 	position.y = clamp(position.y, -280, 280)
 	var input_direction = Vector2(
@@ -35,6 +36,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	pick_new_state()
 
+
+
 func update_animation_parameters(move_input : Vector2):
 	if move_input != Vector2.ZERO:
 		animation_tree.set("parameters/Walk/blend_position", move_input)
@@ -45,12 +48,3 @@ func pick_new_state():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
-
-
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-
-	#
-#func _physics_process(delta):
-
-	

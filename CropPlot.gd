@@ -1,6 +1,9 @@
 extends Area2D
 
+class_name CropPlot
 signal crop_gathered
+
+@export var index : int
 
 const STAGE_NO_SEED = 1
 const STAGE_SEEDLING = 2
@@ -10,7 +13,16 @@ const STAGE_MATURE_PLANT = 4
 var currentStage = STAGE_SEEDLING
 var farmer_present = false
 
+
 func _ready():
+	if currentStage == 1:
+		currentStage = STAGE_NO_SEED
+	elif currentStage == 2:
+		currentStage = STAGE_SEEDLING
+	elif currentStage == 3:
+		currentStage = STAGE_YOUNG_PLANT
+	elif currentStage == 4:
+		currentStage = STAGE_MATURE_PLANT
 	startGrowth()
 	$grabTimer.start()
 	updateCropAppearance()
@@ -63,6 +75,7 @@ func updateCropAppearance():
 			$stage3.show()
 
 func _on_body_entered(body):
+	var mySeed = get_parent()
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
 		print("Gathering")
 		farmer_present = true
