@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckxnjs0jqug4e"]
+[gd_scene load_steps=13 format=3 uid="uid://ckxnjs0jqug4e"]
 
 [ext_resource type="Script" path="res://CropPlot.gd" id="1_giqam"]
 [ext_resource type="Texture2D" uid="uid://nkuhol5m0bh2" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/crops.png" id="2_q56jm"]
+[ext_resource type="Texture2D" uid="uid://powciecmtgfh" path="res://Assets/Art/Mark.png" id="3_m0q2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61msg"]
 size = Vector2(153, 84)
@@ -234,6 +235,54 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_1jnwm")
 
+[sub_resource type="Animation" id="Animation_pm3pr"]
+resource_name = "Crops Ready"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mark:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_cp2bt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mark:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwfy6"]
+_data = {
+"Crops Ready": SubResource("Animation_pm3pr"),
+"RESET": SubResource("Animation_cp2bt")
+}
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5tm5e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t8sjh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p7n3s"]
+states/Float/node = SubResource("AnimationNodeBlendSpace2D_5tm5e")
+states/Float/position = Vector2(350, 100)
+transitions = ["Start", "Float", SubResource("AnimationNodeStateMachineTransition_t8sjh")]
+
 [node name="CropPlot" type="Area2D"]
 z_index = 1
 collision_layer = 2
@@ -284,6 +333,22 @@ one_shot = true
 [node name="growthTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rwfy6")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_p7n3s")
+parameters/Float/blend_position = Vector2(-0.00160003, 0.015873)
+
+[node name="Mark" type="Sprite2D" parent="."]
+z_index = 8
+position = Vector2(432, 364)
+scale = Vector2(3, 3)
+texture = ExtResource("3_m0q2u")
+hframes = 4
 
 [connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

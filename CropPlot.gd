@@ -10,11 +10,13 @@ const STAGE_SEEDLING = 2
 const STAGE_YOUNG_PLANT = 3
 const STAGE_MATURE_PLANT = 4
 
-var currentStage = STAGE_SEEDLING
+var currentStage = STAGE_NO_SEED
 var farmer_present = false
-
+@onready var anim2 = $AnimatedSprite2D
+@onready var anim : AnimationPlayer = $AnimationPlayer
 
 func _ready():
+	
 	if currentStage == 1:
 		currentStage = STAGE_NO_SEED
 	elif currentStage == 2:
@@ -26,6 +28,13 @@ func _ready():
 	startGrowth()
 	$grabTimer.start()
 	updateCropAppearance()
+
+func _process(delta):
+	if currentStage == STAGE_MATURE_PLANT:
+		$Mark.show()
+		anim.play("Crops Ready")
+	else:
+		$Mark.hide()
 
 func _on_grab_timer_timeout():
 	if farmer_present:
@@ -40,7 +49,6 @@ func startGrowth():
 func _on_growth_timer_timeout():
 	match currentStage:
 		STAGE_NO_SEED:
-			#currentStage = STAGE_SEEDLING
 			updateCropAppearance()
 		STAGE_SEEDLING:
 			currentStage = STAGE_YOUNG_PLANT
@@ -77,9 +85,9 @@ func updateCropAppearance():
 func _on_body_entered(body):
 	var mySeed = get_parent()
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
-		print("Gathering")
-		farmer_present = true
-		$grabTimer.start()
+			print("Gathering")
+			farmer_present = true
+			$grabTimer.start()
 
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):

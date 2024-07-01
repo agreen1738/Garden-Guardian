@@ -11,7 +11,6 @@ var isinPlot2 = false
 var isinPlot3 = false
 var isinPlot4 = false
 
-# Define class variables for CropPlot nodes
 var cropPlot1
 var cropPlot2
 var cropPlot3
@@ -69,12 +68,7 @@ func _on_crop_plot_1_crop_gathered():
 	myCrop += 1
 	print("myCrop updated to: ", myCrop)
 
-func _input(event):
-	var stage4 = cropPlot4.currentStage
-	var stage3 = cropPlot3.currentStage
-	var stage2 = cropPlot2.currentStage
-	var stage1 = cropPlot1.currentStage
-	
+func _input(event):	
 	if isinPlot4 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot4.currentStage == 1:
 		mySeed -= 1
 		cropPlot4.currentStage = 2
@@ -95,6 +89,10 @@ func _input(event):
 		cropPlot1.currentStage = 2
 		$CanvasLayer/Seed.text = str("Seed: ", mySeed)
 		
+
+
+func _on_sell_area_body_exited(body):
+	onSell = false
 
 func _on_crop_plot_4_body_entered(body):
 	isinPlot4 = true
@@ -119,3 +117,5 @@ func _on_crop_plot_1_body_entered(body):
 	onSeed = false
 func _on_crop_plot_1_body_exited(body):
 	isinPlot1 = false
+
+

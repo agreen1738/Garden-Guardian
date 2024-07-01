@@ -2,7 +2,7 @@ extends Area2D
 
 signal get_seed
 var farmer_present = false
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$checkSeed.start()
 
