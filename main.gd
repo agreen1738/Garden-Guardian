@@ -22,12 +22,10 @@ func _ready():
 	cropPlot3 = get_node("CropPlot3")
 	cropPlot4 = get_node("CropPlot4")
 	
-	print("myCrop: ", myCrop)
-	
 	$SellArea/Label.hide()
 	$SeedArea/Label.hide()
 
-func _physics(delta):
+func _physics(_delta):
 	var onSell = false
 	var onSeed = false
 
@@ -51,42 +49,43 @@ func _process(_delta):
 		money += 1    
 		$SellArea/Label.hide()    
 		$CanvasLayer/Money.text = str("Money: ", money)
+		$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
 func _on_crop_plot_4_crop_gathered():
 	myCrop += 1
-	print("myCrop updated to: ", myCrop)
+	$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
 func _on_crop_plot_3_crop_gathered():
 	myCrop += 1
-	print("myCrop updated to: ", myCrop)
+	$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
 func _on_crop_plot_2_crop_gathered():
 	myCrop += 1
-	print("myCrop updated to: ", myCrop)
+	$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
 func _on_crop_plot_1_crop_gathered():
 	myCrop += 1
-	print("myCrop updated to: ", myCrop)
+	$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
 func _input(event):	
-	if isinPlot4 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot4.currentStage == 1:
+	if isinPlot4 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot4.currentStage == 0:
 		mySeed -= 1
-		cropPlot4.currentStage = 2
+		cropPlot4.currentStage = 1
 		$CanvasLayer/Seed.text = str("Seed: ", mySeed)
 		
-	if isinPlot3 and event.is_action_pressed("ui_e") and mySeed > 0:
+	if isinPlot3 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot3.currentStage == 0:
 		mySeed -= 1
-		cropPlot3.currentStage = 2
+		cropPlot3.currentStage = 1
 		$CanvasLayer/Seed.text = str("Seed: ", mySeed)
 		
-	if isinPlot2 and event.is_action_pressed("ui_e") and mySeed > 0:
+	if isinPlot2 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot2.currentStage == 0:
 		mySeed -= 1
-		cropPlot2.currentStage = 2
+		cropPlot2.currentStage = 1
 		$CanvasLayer/Seed.text = str("Seed: ", mySeed)
 		
-	if isinPlot1 and event.is_action_pressed("ui_e") and mySeed > 0:
+	if isinPlot1 and event.is_action_pressed("ui_e") and mySeed > 0 and cropPlot1.currentStage == 0:
 		mySeed -= 1
-		cropPlot1.currentStage = 2
+		cropPlot1.currentStage = 1
 		$CanvasLayer/Seed.text = str("Seed: ", mySeed)
 		
 

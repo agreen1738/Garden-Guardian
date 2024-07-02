@@ -10,7 +10,7 @@ const STAGE_SEEDLING = 2
 const STAGE_YOUNG_PLANT = 3
 const STAGE_MATURE_PLANT = 4
 
-var currentStage = STAGE_NO_SEED
+var currentStage = 0
 var farmer_present = false
 @onready var anim2 = $AnimatedSprite2D
 @onready var anim : AnimationPlayer = $AnimationPlayer
@@ -41,6 +41,7 @@ func _on_grab_timer_timeout():
 		emit_signal("crop_gathered")
 		currentStage = STAGE_NO_SEED
 		updateCropAppearance()
+		currentStage = 0
 		return true
 
 func startGrowth():
@@ -49,6 +50,7 @@ func startGrowth():
 func _on_growth_timer_timeout():
 	match currentStage:
 		STAGE_NO_SEED:
+			currentStage = STAGE_SEEDLING
 			updateCropAppearance()
 		STAGE_SEEDLING:
 			currentStage = STAGE_YOUNG_PLANT

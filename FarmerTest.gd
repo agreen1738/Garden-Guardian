@@ -34,7 +34,7 @@ func _on_anim_timer_timeout():
 	anim.hide()
 	$Sprite2D.show()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position.x = clamp(position.x, -539, 556)
 	position.y = clamp(position.y, -280, 280)
 	var input_direction = Vector2(
@@ -103,13 +103,13 @@ func pick_new_state():
 	else:
 		state_machine.travel("Idle")
 
-func _on_crop_plot_4_body_entered(body): 
+func _on_crop_plot_4_body_entered(_body): 
 	if cropPlot4.currentStage == 4:
 		anim.show()
 		$Sprite2D.hide()
 		anim.play("Gather")
 
-func _on_crop_plot_4_body_exited(body):
+func _on_crop_plot_4_body_exited(_body):
 	anim.hide()
 	$Sprite2D.show()
 
@@ -117,13 +117,13 @@ func _on_crop_plot_4_crop_gathered():
 	anim.hide()
 	$Sprite2D.show()	
 
-func _on_crop_plot_3_body_entered(body):
+func _on_crop_plot_3_body_entered(_body):
 	if cropPlot3.currentStage == 4:
 		anim.show()
 		$Sprite2D.hide()
 		anim.play("Gather")
 
-func _on_crop_plot_3_body_exited(body):
+func _on_crop_plot_3_body_exited(_body):
 	anim.hide()
 	$Sprite2D.show()
 
@@ -131,13 +131,13 @@ func _on_crop_plot_3_crop_gathered():
 	anim.hide()
 	$Sprite2D.show()
 
-func _on_crop_plot_2_body_entered(body):
+func _on_crop_plot_2_body_entered(_body):
 	if cropPlot2.currentStage == 4:
 		anim.show()
 		$Sprite2D.hide()
 		anim.play("Gather")
 
-func _on_crop_plot_2_body_exited(body):
+func _on_crop_plot_2_body_exited(_body):
 	anim.hide()
 	$Sprite2D.show()
 
@@ -145,13 +145,13 @@ func _on_crop_plot_2_crop_gathered():
 	anim.hide()
 	$Sprite2D.show()
 
-func _on_crop_plot_1_body_entered(body):
+func _on_crop_plot_1_body_entered(_body):
 	if cropPlot1.currentStage == 4:
 		anim.show()
 		$Sprite2D.hide()
 		anim.play("Gather")
 
-func _on_crop_plot_1_body_exited(body):
+func _on_crop_plot_1_body_exited(_body):
 	anim.hide()
 	$Sprite2D.show()
 

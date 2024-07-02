@@ -564,6 +564,17 @@ theme_override_fonts/font = ExtResource("7_lxima")
 theme_override_font_sizes/font_size = 32
 text = "Seed: 0"
 
+[node name="Crops" type="Label" parent="CanvasLayer"]
+offset_left = 501.0
+offset_top = 25.0
+offset_right = 712.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.724169, 0.69149, 3.85046e-07, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_lxima")
+theme_override_font_sizes/font_size = 32
+text = "Crops: 0"
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vdvuc")
 format = 2
