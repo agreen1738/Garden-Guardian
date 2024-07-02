@@ -1,8 +1,16 @@
-[gd_scene load_steps=59 format=3 uid="uid://c7kb7wpe8w2s3"]
+[gd_scene load_steps=62 format=3 uid="uid://c7kb7wpe8w2s3"]
 
 [ext_resource type="Script" path="res://FarmerTest.gd" id="1_qndbs"]
 [ext_resource type="Texture2D" uid="uid://dmsgm8m2vvcq8" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer.png" id="2_ksf6g"]
 [ext_resource type="Texture2D" uid="uid://dy1kp4tr3folt" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer Extra.png" id="3_0rutq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxs7g"]
+atlas = ExtResource("3_0rutq")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxx0b"]
+atlas = ExtResource("3_0rutq")
+region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t076h"]
 atlas = ExtResource("3_0rutq")
@@ -118,6 +126,17 @@ region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vn0l"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxs7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxx0b")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t076h")
@@ -271,6 +290,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422vs"]
 size = Vector2(37, 24.25)
 
+[sub_resource type="Animation" id="Animation_5t4xy"]
+resource_name = "Gathering"
+length = 0.4
+loop_mode = 1
+
 [sub_resource type="Animation" id="Animation_k5e5l"]
 length = 0.001
 loop_mode = 1
@@ -411,11 +435,6 @@ tracks/0/keys = {
 "values": [7, 6]
 }
 
-[sub_resource type="Animation" id="Animation_5t4xy"]
-resource_name = "Gathering"
-length = 0.4
-loop_mode = 1
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5cjr4"]
 _data = {
 "Gathering": SubResource("Animation_5t4xy"),
@@ -495,6 +514,9 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_07b1e")
 states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fpxr6"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rxq60"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fbngm")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kf2x"]
+radius = 55.0364
+
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Farmer"]]
 script = ExtResource("1_qndbs")
 
@@ -505,13 +527,14 @@ scale = Vector2(3.11111, 3.11111)
 texture = ExtResource("2_ksf6g")
 hframes = 4
 vframes = 4
-frame = 9
+frame = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(567, 315)
 scale = Vector2(3.11, 3.11)
 sprite_frames = SubResource("SpriteFrames_3vn0l")
-animation = &"Swing Down"
+animation = &"Damage"
+frame_progress = 0.0769858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(567, 331.125)
@@ -543,17 +566,13 @@ offset_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(566, 331.125)
-shape = SubResource("RectangleShape2D_422vs")
-
 [node name="AnimTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Bat" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(567, 322)
+shape = SubResource("CircleShape2D_4kf2x")
+
 [connection signal="timeout" from="AnimTimer" to="." method="_on_anim_timer_timeout"]

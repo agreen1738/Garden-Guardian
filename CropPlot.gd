@@ -87,7 +87,6 @@ func updateCropAppearance():
 func _on_body_entered(body):
 	var mySeed = get_parent()
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
-			print("Gathering")
 			farmer_present = true
 			$grabTimer.start()
 

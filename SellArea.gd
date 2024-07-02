@@ -16,7 +16,6 @@ func _on_body_entered(body):
 		farmer_present = true
 		$checkBox.start()
 
-
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
 		farmer_present = false

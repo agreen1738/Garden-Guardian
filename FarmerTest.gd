@@ -8,6 +8,8 @@ var win_height: float
 var p_width : float
 var win_width : float
 
+var PlayerHealth = 0
+
 var cropPlot1
 var cropPlot2
 var cropPlot3
@@ -18,6 +20,7 @@ var cropPlot4
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
+	$Bat.disabled = true
 	cropPlot1 = get_parent().get_node("CropPlot1")
 	cropPlot2 = get_parent().get_node("CropPlot2")
 	cropPlot3 = get_parent().get_node("CropPlot3")
@@ -31,6 +34,7 @@ func _ready():
 	p_width = $ColorRect.get_size().x
 
 func _on_anim_timer_timeout():
+	$Bat.hide()
 	anim.hide()
 	$Sprite2D.show()
 
@@ -53,41 +57,49 @@ func _input(event):
 		var current_state = state_machine.get_current_node()
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, 1):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Down")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, 1):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Down")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, -1):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Up")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, -1):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Up")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(1, 0):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Right")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(1, 0):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Right")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(-1, 0):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Left")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(-1, 0):
 			anim.show()
+			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
 			anim.play("Swing Left")
