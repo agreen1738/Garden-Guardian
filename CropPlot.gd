@@ -1,25 +1,47 @@
 extends Area2D
 
+class_name CropPlot
 signal crop_gathered
+
+@export var index : int
 
 const STAGE_NO_SEED = 1
 const STAGE_SEEDLING = 2
 const STAGE_YOUNG_PLANT = 3
 const STAGE_MATURE_PLANT = 4
 
-var currentStage = STAGE_SEEDLING
+var currentStage = 0
 var farmer_present = false
+@onready var anim2 = $AnimatedSprite2D
+@onready var anim : AnimationPlayer = $AnimationPlayer
 
 func _ready():
+	
+	if currentStage == 1:
+		currentStage = STAGE_NO_SEED
+	elif currentStage == 2:
+		currentStage = STAGE_SEEDLING
+	elif currentStage == 3:
+		currentStage = STAGE_YOUNG_PLANT
+	elif currentStage == 4:
+		currentStage = STAGE_MATURE_PLANT
 	startGrowth()
 	$grabTimer.start()
 	updateCropAppearance()
+
+func _process(delta):
+	if currentStage == STAGE_MATURE_PLANT:
+		$Mark.show()
+		anim.play("Crops Ready")
+	else:
+		$Mark.hide()
 
 func _on_grab_timer_timeout():
 	if farmer_present:
 		emit_signal("crop_gathered")
 		currentStage = STAGE_NO_SEED
 		updateCropAppearance()
+		currentStage = 0
 		return true
 
 func startGrowth():
@@ -28,7 +50,7 @@ func startGrowth():
 func _on_growth_timer_timeout():
 	match currentStage:
 		STAGE_NO_SEED:
-			#currentStage = STAGE_SEEDLING
+			currentStage = STAGE_SEEDLING
 			updateCropAppearance()
 		STAGE_SEEDLING:
 			currentStage = STAGE_YOUNG_PLANT
@@ -63,10 +85,10 @@ func updateCropAppearance():
 			$stage3.show()
 
 func _on_body_entered(body):
+	var mySeed = get_parent()
 	if body.is_in_group("Farmer") and currentStage == STAGE_MATURE_PLANT:
-		print("Gathering")
-		farmer_present = true
-		$grabTimer.start()
+			farmer_present = true
+			$grabTimer.start()
 
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
