@@ -3,11 +3,13 @@ extends enemy
 @export var speed = 250
 @export var accel = 7
 @export var damage = 10
+@export var health = 100
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_body: plant
 @onready var direction: Vector2
 @onready var state_machine: State_Machine = $State_Machine
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 var initializer: State_Initializer
 var targets := []
@@ -15,6 +17,9 @@ var targets := []
 func _ready():
 	initializer = State_Initializer.new()
 	initializer.parent = self
+	initializer.nav = nav
+	initializer.accel = accel
+	initializer.speed = speed
 	for n in get_parent().get_children():
 		if n is CropPlot:
 			initializer.crops.append(n)
@@ -24,6 +29,7 @@ func _ready():
 			
 
 func _physics_process(delta):
+	
 	move_and_slide()
 	
 	if velocity.length() > 0:
@@ -36,6 +42,11 @@ func _physics_process(delta):
 
 func set_target(target: plant):
 	target_body = target
+
+func take_damage(damage_taken: float):
+	health -= damage_taken
+	if health < 0:
+		queue_free()
 	
 	
 #

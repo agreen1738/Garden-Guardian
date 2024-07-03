@@ -21,5 +21,10 @@ func Update(delta: float):
 		parent = initializer.parent
 	
 func Physics_Update(delta: float):
-	direction = initializer.farmer.global_position - initializer.parent.global_position
-	initializer.parent.velocity = direction.normalized() * move_speed
+	if initializer.farmer and initializer.parent and initializer.nav:
+		#direction = initializer.farmer.global_position - initializer.parent.global_position
+		#initializer.parent.velocity = direction.normalized()
+		
+		initializer.nav.target_position = initializer.parent.position
+		direction = (initializer.nav.get_next_path_position() - global_position).normalized()
+		initializer.parent.velocity = initializer.parent.velocity.lerp(direction * initializer.speed, initializer.accel * delta)

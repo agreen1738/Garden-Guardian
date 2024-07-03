@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bw7krie3dyvyw"]
+[gd_scene load_steps=33 format=3 uid="uid://bw7krie3dyvyw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_k6382"]
 [ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Farmer.tscn" id="2_l1mtv"]
@@ -463,6 +463,12 @@ sources/7 = SubResource("TileSetAtlasSource_k11ag")
 sources/8 = SubResource("TileSetAtlasSource_3oash")
 sources/9 = SubResource("TileSetAtlasSource_us08a")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lgdml"]
+vertices = PackedVector2Array(9, 9, 1139, 9, 798, 184, 609, 183, 525, 184, 339, 183, 1141, 398, 1127, 417, 797, 346, 797, 304, 5, 574, 339, 308, 119, 575, 795, 470, 1124, 476, 1108, 476, 1091, 526, 1091, 542, 1050, 542, 611, 304, 613, 349, 524, 312, 1108, 524, 1042, 565, 1031, 573, 995, 573, 613, 470, 992, 600, 958, 602, 124, 600)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 2, 1), PackedInt32Array(10, 0, 5, 11, 12), PackedInt32Array(13, 8, 7, 14, 15), PackedInt32Array(16, 17, 18, 13), PackedInt32Array(19, 9, 8, 20, 21), PackedInt32Array(4, 3, 19, 21), PackedInt32Array(13, 15, 22, 16), PackedInt32Array(13, 18, 23, 24, 25), PackedInt32Array(26, 13, 25, 27, 28, 29, 12), PackedInt32Array(26, 12, 11, 21, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -1, 1149, 0, 1152, 402, 1137, 421, 1134, 486, 1118, 486, 1118, 533, 1101, 535, 1101, 553, 1057, 552, 1050, 572, 1035, 584, 1004, 583, 1002, 610, 958, 612, 116, 610, 111, 585, -5, 584), PackedVector2Array(349, 193, 349, 298, 514, 302, 515, 194), PackedVector2Array(619, 193, 621, 294, 787, 294, 788, 194), PackedVector2Array(350, 357, 515, 354, 514, 461, 348, 464), PackedVector2Array(623, 359, 623, 460, 785, 460, 787, 356)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="BackGround" type="Sprite2D"]
 z_index = -6
 centered = false
@@ -474,18 +480,19 @@ position = Vector2(578, 323)
 collision_mask = 4
 
 [node name="CropPlot1" parent="." instance=ExtResource("3_hcldh")]
-position = Vector2(0, -160)
+position = Vector2(438, 246)
 index = 1
 
 [node name="CropPlot2" parent="." instance=ExtResource("3_hcldh")]
-position = Vector2(272, -160)
+position = Vector2(710, 246)
 index = 2
 
 [node name="CropPlot3" parent="." instance=ExtResource("3_hcldh")]
+position = Vector2(438, 406)
 index = 3
 
 [node name="CropPlot4" parent="." instance=ExtResource("3_hcldh")]
-position = Vector2(272, 0)
+position = Vector2(710, 406)
 index = 4
 
 [node name="SellArea" type="Area2D" parent="."]
@@ -546,15 +553,16 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Money" type="Label" parent="CanvasLayer"]
-offset_left = 25.0
-offset_top = 28.0
-offset_right = 236.0
-offset_bottom = 69.0
+offset_left = 463.0
+offset_top = 434.0
+offset_right = 674.0
+offset_bottom = 475.0
 theme_override_colors/font_color = Color(0, 0.439216, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.101961, 0, 1)
 theme_override_fonts/font = ExtResource("6_mvibl")
 theme_override_font_sizes/font_size = 32
 text = "Money: 0"
+metadata/_edit_use_anchors_ = true
 
 [node name="Seed" type="Label" parent="CanvasLayer"]
 offset_left = 935.0
@@ -607,10 +615,13 @@ layer_7/tile_data = PackedInt32Array()
 [node name="spawner_manager" parent="." instance=ExtResource("17_hkqq8")]
 
 [node name="Spawner" parent="." instance=ExtResource("18_xk38a")]
-position = Vector2(1166, 73)
+position = Vector2(232, 63)
 
 [node name="Spawner2" parent="." instance=ExtResource("18_xk38a")]
-position = Vector2(761, -41)
+position = Vector2(761, 63)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_lgdml")
 
 [connection signal="body_entered" from="CropPlot1" to="." method="_on_crop_plot_1_body_entered"]
 [connection signal="body_entered" from="CropPlot1" to="Farmer" method="_on_crop_plot_1_body_entered"]

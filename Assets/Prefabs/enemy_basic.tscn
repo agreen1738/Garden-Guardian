@@ -161,3 +161,5 @@ enemy_mob = NodePath("../..")
 
 [node name="EnemyAttackPlayer" type="Node2D" parent="State_Machine"]
 script = ExtResource("6_ejae1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
