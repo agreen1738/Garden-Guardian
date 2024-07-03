@@ -522,22 +522,19 @@ script = ExtResource("1_qndbs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(567, 314)
 scale = Vector2(3.11111, 3.11111)
 texture = ExtResource("2_ksf6g")
 hframes = 4
 vframes = 4
-frame = 8
+frame = 9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(567, 315)
 scale = Vector2(3.11, 3.11)
 sprite_frames = SubResource("SpriteFrames_3vn0l")
 animation = &"Damage"
 frame_progress = 0.0769858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(567, 331.125)
 shape = SubResource("RectangleShape2D_422vs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -572,7 +569,6 @@ one_shot = true
 
 [node name="Bat" type="CollisionShape2D" parent="."]
 z_index = 5
-position = Vector2(567, 322)
 shape = SubResource("CircleShape2D_4kf2x")
 
 [connection signal="timeout" from="AnimTimer" to="." method="_on_anim_timer_timeout"]

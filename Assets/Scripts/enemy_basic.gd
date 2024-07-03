@@ -7,13 +7,21 @@ extends enemy
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var target_body: plant
 @onready var direction: Vector2
+@onready var state_machine: State_Machine = $State_Machine
 
+var initializer: State_Initializer
 var targets := []
 
 func _ready():
+	initializer = State_Initializer.new()
+	initializer.parent = self
 	for n in get_parent().get_children():
-		if n is plant:
-			targets.append(n)
+		if n is CropPlot:
+			initializer.crops.append(n)
+		if n is Farmer:
+			initializer.farmer = n
+	state_machine.initializer = initializer
+			
 
 func _physics_process(delta):
 	move_and_slide()
@@ -28,6 +36,8 @@ func _physics_process(delta):
 
 func set_target(target: plant):
 	target_body = target
+	
+	
 #
 #func _physics_process(delta):
 	#anim.play("run")

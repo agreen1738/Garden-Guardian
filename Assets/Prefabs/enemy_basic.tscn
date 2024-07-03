@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://daogbaenlli7i" path="res://Assets/Art/Enemies/Angry_Pig/Run (36x30).png" id="3_ip1s3"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/state_machine.gd" id="4_yph5d"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/EnemyIdle.gd" id="5_fnsfk"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/EnemySeek.gd" id="6_y1h1m"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/EnemyAttackPlayer.gd" id="6_ejae1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kabey"]
 atlas = ExtResource("2_634uy")
@@ -153,14 +153,11 @@ shape = SubResource("CapsuleShape2D_ivel4")
 
 [node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_yph5d")
-initial_state = NodePath("EnemyIdle")
+initial_state = NodePath("EnemyAttackPlayer")
 
 [node name="EnemyIdle" type="Node2D" parent="State_Machine" node_paths=PackedStringArray("enemy_mob")]
 script = ExtResource("5_fnsfk")
 enemy_mob = NodePath("../..")
 
-[node name="EnemySeek" type="Node2D" parent="State_Machine" node_paths=PackedStringArray("enemy_mob")]
-scale = Vector2(2, 2)
-script = ExtResource("6_y1h1m")
-enemy_mob = NodePath("../..")
-move_speed = 10.0
+[node name="EnemyAttackPlayer" type="Node2D" parent="State_Machine"]
+script = ExtResource("6_ejae1")

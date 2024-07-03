@@ -6,6 +6,7 @@ class_name EnemyIdle
 
 var move_direction : Vector2
 var wander_time : float
+var farmer
 
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()

@@ -6,13 +6,13 @@ class_name State_Machine
 
 var current_state : State
 var states : Dictionary = {}
+var initializer: State_Initializer
 
 func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			var initializer = State_Initializer.new()
-			initializer.farmer
 			child.Transitioned.connect(on_child_transition)
 	
 	if initial_state:
@@ -22,6 +22,8 @@ func _ready():
 func _process(delta):
 	if current_state:
 		current_state.Update(delta)
+	if initializer:
+		current_state.set_initializer(initializer)
 
 func _physics_process(delta):
 	if current_state:

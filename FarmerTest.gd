@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Farmer
 
 @export var starting_direction : Vector2 = Vector2(0,1)
 @export var move_speed : float = 250
@@ -39,8 +40,7 @@ func _on_anim_timer_timeout():
 	$Sprite2D.show()
 
 func _physics_process(_delta):
-	position.x = clamp(position.x, -539, 556)
-	position.y = clamp(position.y, -280, 280)
+	
 	var input_direction = Vector2(
 	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
