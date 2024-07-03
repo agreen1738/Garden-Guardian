@@ -30,6 +30,9 @@ func _ready():
 	updateCropAppearance()
 
 func _process(delta):
+	if currentStage == STAGE_NO_SEED:
+			currentStage = STAGE_SEEDLING
+			updateCropAppearance()
 	if currentStage == STAGE_MATURE_PLANT:
 		$Mark.show()
 		anim.play("Crops Ready")
@@ -49,9 +52,6 @@ func startGrowth():
 
 func _on_growth_timer_timeout():
 	match currentStage:
-		STAGE_NO_SEED:
-			currentStage = STAGE_SEEDLING
-			updateCropAppearance()
 		STAGE_SEEDLING:
 			currentStage = STAGE_YOUNG_PLANT
 			updateCropAppearance()

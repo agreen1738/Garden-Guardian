@@ -515,7 +515,7 @@ states/Walk/position = Vector2(526, 100)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fpxr6"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rxq60"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fbngm")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kf2x"]
-radius = 36.0
+radius = 36.0139
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Farmer"]]
 scale = Vector2(1.5, 1.5)
@@ -527,13 +527,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_ksf6g")
 hframes = 4
 vframes = 4
-frame = 9
+frame = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3vn0l")
 animation = &"Gather"
-frame_progress = 0.727563
+frame_progress = 0.0412608
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -570,6 +570,7 @@ wait_time = 0.4
 one_shot = true
 
 [node name="Bat" type="CollisionShape2D" parent="."]
+z_index = 5
 shape = SubResource("CircleShape2D_4kf2x")
 
 [connection signal="timeout" from="AnimTimer" to="." method="_on_anim_timer_timeout"]

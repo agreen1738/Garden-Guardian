@@ -15,6 +15,8 @@ var cropPlot4
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
+	$Bat.remove_from_group("Farmer")
+	$Bat.hide()
 	$Bat.disabled = true
 	cropPlot1 = get_parent().get_node("CropPlot1")
 	cropPlot2 = get_parent().get_node("CropPlot2")
@@ -27,8 +29,11 @@ func _on_anim_timer_timeout():
 	$Bat.hide()
 	anim.hide()
 	$Sprite2D.show()
+	$Bat.disabled = true
 
 func _physics_process(_delta):
+	
+	$Bat.disabled = true
 	var input_direction = Vector2(
 	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -48,12 +53,14 @@ func _input(event):
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Down")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, 1):
 			anim.show()
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Down")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(0, -1):
 			anim.show()
@@ -66,30 +73,35 @@ func _input(event):
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Up")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(1, 0):
 			anim.show()
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Right")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(1, 0):
 			anim.show()
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Right")
 		if current_state == "Idle" and animation_tree.get("parameters/Idle/blend_position") == Vector2(-1, 0):
 			anim.show()
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Left")
 		if current_state == "Walk" and animation_tree.get("parameters/Idle/blend_position") == Vector2(-1, 0):
 			anim.show()
 			$Bat.show()
 			$Sprite2D.hide()
 			$AnimTimer.start()
+			$Bat.disabled = false
 			anim.play("Swing Left")
 			
 func update_animation_parameters(move_input : Vector2):
