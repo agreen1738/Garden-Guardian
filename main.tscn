@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=31 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Script" path="res://main.gd" id="2_q60ld"]
 [ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Farmer.tscn" id="3_6evbk"]
+[ext_resource type="PackedScene" uid="uid://d0mp2mymj5cr8" path="res://truck.tscn" id="3_fij21"]
 [ext_resource type="PackedScene" uid="uid://ckxnjs0jqug4e" path="res://CropPlot.tscn" id="3_jhsui"]
 [ext_resource type="Script" path="res://SeedArea.gd" id="5_lfe0e"]
 [ext_resource type="Script" path="res://SellArea.gd" id="6_bl62t"]
@@ -468,21 +469,26 @@ script = ExtResource("2_q60ld")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_6evbk")]
 top_level = true
+position = Vector2(568, 319)
 collision_mask = 4
 
+[node name="Truck" parent="." instance=ExtResource("3_fij21")]
+position = Vector2(1133, 315)
+
 [node name="CropPlot1" parent="." instance=ExtResource("3_jhsui")]
-position = Vector2(0, -160)
+position = Vector2(432, 248)
 index = 1
 
 [node name="CropPlot2" parent="." instance=ExtResource("3_jhsui")]
-position = Vector2(272, -160)
+position = Vector2(704, 248)
 index = 2
 
 [node name="CropPlot3" parent="." instance=ExtResource("3_jhsui")]
+position = Vector2(432, 408)
 index = 3
 
 [node name="CropPlot4" parent="." instance=ExtResource("3_jhsui")]
-position = Vector2(272, 0)
+position = Vector2(704, 408)
 index = 4
 
 [node name="SellArea" type="Area2D" parent="."]
@@ -491,6 +497,7 @@ collision_layer = 2
 script = ExtResource("6_bl62t")
 
 [node name="ColorRect" type="ColorRect" parent="SellArea"]
+visible = false
 offset_left = 1048.0
 offset_top = 256.0
 offset_right = 1112.0
@@ -501,6 +508,7 @@ position = Vector2(1080, 320)
 shape = SubResource("RectangleShape2D_242r1")
 
 [node name="Label" type="Label" parent="SellArea"]
+visible = false
 texture_filter = 1
 offset_left = 1096.0
 offset_top = 304.0

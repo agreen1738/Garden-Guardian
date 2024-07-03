@@ -3,12 +3,7 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0,1)
 @export var move_speed : float = 250
 
-var p_height : float
-var win_height: float
-var p_width : float
-var win_width : float
-
-var PlayerHealth = 0
+var PlayerHealth = 3
 
 var cropPlot1
 var cropPlot2
@@ -27,11 +22,6 @@ func _ready():
 	cropPlot4 = get_parent().get_node("CropPlot4")
 	anim.hide()
 	update_animation_parameters(starting_direction)
-	win_height = get_viewport_rect().size.y
-	p_height = $ColorRect.get_size().y
-
-	win_width = get_viewport_rect().size.x
-	p_width = $ColorRect.get_size().x
 
 func _on_anim_timer_timeout():
 	$Bat.hide()
@@ -39,8 +29,6 @@ func _on_anim_timer_timeout():
 	$Sprite2D.show()
 
 func _physics_process(_delta):
-	position.x = clamp(position.x, -539, 556)
-	position.y = clamp(position.y, -280, 280)
 	var input_direction = Vector2(
 	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
