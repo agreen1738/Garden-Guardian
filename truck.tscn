@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0mp2mymj5cr8"]
+[gd_scene load_steps=9 format=3 uid="uid://d0mp2mymj5cr8"]
 
 [ext_resource type="Texture2D" uid="uid://ey47jjifp6r6" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Truck.png" id="1_t2gds"]
 [ext_resource type="Script" path="res://truck.gd" id="2_6fxgt"]
@@ -10,6 +10,14 @@ region = Rect2(0, 105, 105, 105)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4xws"]
 atlas = ExtResource("1_t2gds")
 region = Rect2(0, 0, 105, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rbpw"]
+atlas = ExtResource("1_t2gds")
+region = Rect2(105, 105, 105, 105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cem4"]
+atlas = ExtResource("1_t2gds")
+region = Rect2(105, 0, 105, 105)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhbcc"]
 animations = [{
@@ -23,6 +31,17 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rbpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cem4")
+}],
+"loop": true,
+"name": &"Idle Highlight",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkao5"]
@@ -34,9 +53,10 @@ script = ExtResource("2_6fxgt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yhbcc")
-animation = &"Idle"
-frame_progress = 0.351251
+animation = &"Idle Highlight"
+frame_progress = 0.672725
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-6, -4)
 shape = SubResource("RectangleShape2D_kkao5")

@@ -16,23 +16,31 @@ var cropPlot2
 var cropPlot3
 var cropPlot4
 
+var truck
+var anim
+
 func _ready():
+	truck = get_node("Truck/AnimatedSprite2D")
+	anim = $Truck/AnimatedSprite2D
 	cropPlot1 = get_node("CropPlot1")
 	cropPlot2 = get_node("CropPlot2")
 	cropPlot3 = get_node("CropPlot3")
 	cropPlot4 = get_node("CropPlot4")
 	
+	truck.play("Highlight")
+	
 	$SellArea/Label.hide()
 	$SeedArea/Label.hide()
 
 func _physics(_delta):
+	
 	var onSell = false
 	var onSeed = false
 
 func _on_sell_area_has_crop():
 	onSell = true
-	if myCrop > 0:
-		$SellArea/Label.show()
+	#if myCrop > 0:
+		#
 
 func _on_seed_area_get_seed():
 	onSeed = true

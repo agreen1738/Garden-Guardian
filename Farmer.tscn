@@ -521,19 +521,26 @@ radius = 36.0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_qndbs")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -23.0
+offset_top = -27.0
+offset_right = 23.0
+offset_bottom = 21.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_ksf6g")
 hframes = 4
 vframes = 4
-frame = 9
+frame = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3vn0l")
 animation = &"Gather"
-frame_progress = 0.727563
+frame_progress = 0.268726
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -549,21 +556,6 @@ tree_root = SubResource("AnimationNodeStateMachine_ce34h")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(-0.0012005, 0.137966)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-show_behind_parent = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 543.0
-offset_top = 280.0
-offset_right = 593.0
-offset_bottom = 342.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="AnimTimer" type="Timer" parent="."]
 wait_time = 0.4
