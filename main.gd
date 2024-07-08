@@ -26,10 +26,6 @@ func _ready():
 	cropPlot2 = get_node("CropPlot2")
 	cropPlot3 = get_node("CropPlot3")
 	cropPlot4 = get_node("CropPlot4")
-	
-	truck.play("Highlight")
-	
-	$SellArea/Label.hide()
 	$SeedArea/Label.hide()
 
 func _physics(_delta):
@@ -39,8 +35,7 @@ func _physics(_delta):
 
 func _on_sell_area_has_crop():
 	onSell = true
-	#if myCrop > 0:
-		#
+	$Truck/AnimatedSprite2D.play("Idle Highlight")
 
 func _on_seed_area_get_seed():
 	onSeed = true
@@ -55,7 +50,7 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_e") and myCrop > 0 and onSell == true:
 		myCrop -= 1    
 		money += 1    
-		$SellArea/Label.hide()    
+		$Truck/AnimatedSprite2D.play("Idle")    
 		$CanvasLayer/Money.text = str("Money: ", money)
 		$CanvasLayer/Crops.text = str("Crops: ", myCrop)
 
@@ -99,6 +94,7 @@ func _input(event):
 
 
 func _on_sell_area_body_exited(body):
+	$Truck/AnimatedSprite2D.play("Idle")
 	onSell = false
 
 func _on_crop_plot_4_body_entered(body):
@@ -124,5 +120,3 @@ func _on_crop_plot_1_body_entered(body):
 	onSeed = false
 func _on_crop_plot_1_body_exited(body):
 	isinPlot1 = false
-
-

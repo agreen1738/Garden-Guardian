@@ -19,6 +19,5 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("Farmer"):
 		farmer_present = false
-		$Label.hide()
 		$checkBox.stop()
 

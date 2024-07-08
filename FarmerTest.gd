@@ -6,11 +6,6 @@ extends CharacterBody2D
 var PlayerHealth = 3
 var input_direction
 
-var p_height : float
-var win_height: float
-var p_width : float
-var win_width : float
-
 var cropPlot1
 var cropPlot2
 var cropPlot3
@@ -21,10 +16,6 @@ var cropPlot4
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
-	win_height = get_viewport_rect().size.y
-	p_height = $ColorRect.get_size().y
-	win_width = get_viewport_rect().size.x
-	p_width = $ColorRect.get_size().x
 	$Bat.remove_from_group("Farmer")
 	$Bat.hide()
 	$Bat.disabled = true
@@ -42,9 +33,6 @@ func _on_anim_timer_timeout():
 	$Bat.disabled = true
 
 func _physics_process(_delta):
-	position.x = clamp(position.x, p_width / 2, win_width - p_width / 2)
-	position.y = clamp(position.y, p_height / 2, win_height - p_height / 2)
-	$Bat.disabled = true
 	input_direction = Vector2(
 	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
