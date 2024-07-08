@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ckxnjs0jqug4e"]
 
-[ext_resource type="Script" path="res://CropPlot.gd" id="1_giqam"]
+[ext_resource type="Script" path="res://Assets/Scripts/CropPlot.gd" id="1_giqam"]
 [ext_resource type="Texture2D" uid="uid://nkuhol5m0bh2" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/crops.png" id="2_q56jm"]
 [ext_resource type="Texture2D" uid="uid://powciecmtgfh" path="res://Assets/Art/Mark.png" id="3_m0q2u"]
 

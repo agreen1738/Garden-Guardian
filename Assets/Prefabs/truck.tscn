@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0mp2mymj5cr8"]
 
 [ext_resource type="Texture2D" uid="uid://ey47jjifp6r6" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Truck.png" id="1_t2gds"]
-[ext_resource type="Script" path="res://truck.gd" id="2_6fxgt"]
+[ext_resource type="Script" path="res://Assets/Scripts/truck.gd" id="2_6fxgt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_touap"]
 atlas = ExtResource("1_t2gds")

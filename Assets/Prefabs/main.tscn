@@ -1,22 +1,25 @@
-[gd_scene load_steps=50 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=53 format=3 uid="uid://cy10mwhwsb8sg"]
 
-[ext_resource type="Script" path="res://main.gd" id="2_q60ld"]
-[ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Farmer.tscn" id="3_6evbk"]
-[ext_resource type="PackedScene" uid="uid://d0mp2mymj5cr8" path="res://truck.tscn" id="3_fij21"]
-[ext_resource type="PackedScene" uid="uid://ckxnjs0jqug4e" path="res://CropPlot.tscn" id="3_jhsui"]
-[ext_resource type="Script" path="res://SeedArea.gd" id="5_lfe0e"]
-[ext_resource type="Script" path="res://SellArea.gd" id="6_bl62t"]
-[ext_resource type="Texture2D" uid="uid://crckur031i2mq" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="7_675bl"]
-[ext_resource type="FontFile" uid="uid://1wggeck4w87o" path="res://Assets/DePixelHalbfett.ttf" id="7_lxima"]
-[ext_resource type="Texture2D" uid="uid://rsywm57f7exx" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.png" id="8_f6cf4"]
-[ext_resource type="Texture2D" uid="uid://cdpmtfwrwnsad" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="9_r1usx"]
-[ext_resource type="Texture2D" uid="uid://dmbv3jdpfyha7" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="10_8fyp6"]
-[ext_resource type="Texture2D" uid="uid://ctaf0tlgpjymk" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="11_8ucwn"]
-[ext_resource type="Texture2D" uid="uid://bg38dy7n3ba08" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="12_n3ue7"]
-[ext_resource type="Texture2D" uid="uid://dvybbkwigkkhw" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Soil.png" id="12_qkmej"]
-[ext_resource type="Texture2D" uid="uid://d1qjlydeiei1l" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Plants.png" id="14_qiilv"]
-[ext_resource type="Texture2D" uid="uid://dfbcgc3mb1014" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="15_bdjuu"]
-[ext_resource type="Texture2D" uid="uid://5y8t451y6yjl" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Free_Chicken_House.png" id="16_j6067"]
+[ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_5mm2j"]
+[ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Assets/Prefabs/Farmer.tscn" id="2_wliib"]
+[ext_resource type="PackedScene" uid="uid://d0mp2mymj5cr8" path="res://Assets/Prefabs/truck.tscn" id="3_k7gxy"]
+[ext_resource type="PackedScene" uid="uid://1t7cejragwav" path="res://Assets/Prefabs/enemy_basic.tscn" id="3_yenew"]
+[ext_resource type="PackedScene" uid="uid://ckxnjs0jqug4e" path="res://Assets/Prefabs/CropPlot.tscn" id="4_jseu1"]
+[ext_resource type="Script" path="res://Assets/Scripts/SellArea.gd" id="5_3mgwj"]
+[ext_resource type="Script" path="res://Assets/Scripts/SeedArea.gd" id="6_8limc"]
+[ext_resource type="FontFile" uid="uid://1wggeck4w87o" path="res://Assets/DePixelHalbfett.ttf" id="7_oqo4k"]
+[ext_resource type="Texture2D" uid="uid://crckur031i2mq" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="8_jkfc8"]
+[ext_resource type="Texture2D" uid="uid://rsywm57f7exx" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.png" id="9_wmuaa"]
+[ext_resource type="Texture2D" uid="uid://cdpmtfwrwnsad" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Hills.png" id="10_ongwm"]
+[ext_resource type="Texture2D" uid="uid://dmbv3jdpfyha7" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="11_w1eck"]
+[ext_resource type="Texture2D" uid="uid://ctaf0tlgpjymk" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="12_4ra0y"]
+[ext_resource type="Texture2D" uid="uid://bg38dy7n3ba08" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="13_hvnqo"]
+[ext_resource type="Texture2D" uid="uid://dvybbkwigkkhw" path="res://Assets/Sprout Lands - Sprites - Basic pack/Tilesets/Soil.png" id="14_7enyx"]
+[ext_resource type="Texture2D" uid="uid://d1qjlydeiei1l" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Plants.png" id="15_bcwh3"]
+[ext_resource type="Texture2D" uid="uid://dfbcgc3mb1014" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Basic_Grass_Biom_things.png" id="16_yhaix"]
+[ext_resource type="Texture2D" uid="uid://5y8t451y6yjl" path="res://Assets/Sprout Lands - Sprites - Basic pack/Objects/Free_Chicken_House.png" id="17_77fyx"]
+[ext_resource type="PackedScene" uid="uid://bqg86jyouvfwc" path="res://Assets/Prefabs/spawner.tscn" id="19_5c48p"]
+[ext_resource type="PackedScene" uid="uid://0k88wgttxfla" path="res://Assets/Prefabs/spawner_manager.tscn" id="20_bllxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_242r1"]
 size = Vector2(56, 90)
@@ -25,7 +28,7 @@ size = Vector2(56, 90)
 size = Vector2(65, 130)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sie2"]
-texture = ExtResource("7_675bl")
+texture = ExtResource("8_jkfc8")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -99,7 +102,7 @@ texture = ExtResource("7_675bl")
 8:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dsjt"]
-texture = ExtResource("8_f6cf4")
+texture = ExtResource("9_wmuaa")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -172,7 +175,7 @@ texture = ExtResource("8_f6cf4")
 9:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fi8jq"]
-texture = ExtResource("9_r1usx")
+texture = ExtResource("10_ongwm")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -242,14 +245,14 @@ texture = ExtResource("9_r1usx")
 10:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_okpao"]
-texture = ExtResource("10_8fyp6")
+texture = ExtResource("11_w1eck")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5twg"]
-texture = ExtResource("11_8ucwn")
+texture = ExtResource("12_4ra0y")
 1:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -282,7 +285,7 @@ texture = ExtResource("11_8ucwn")
 6:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v7pw"]
-texture = ExtResource("12_n3ue7")
+texture = ExtResource("13_hvnqo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -301,7 +304,7 @@ texture = ExtResource("12_n3ue7")
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h23ks"]
-texture = ExtResource("12_qkmej")
+texture = ExtResource("14_7enyx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -374,7 +377,7 @@ texture = ExtResource("12_qkmej")
 9:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k11ag"]
-texture = ExtResource("14_qiilv")
+texture = ExtResource("15_bcwh3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -389,7 +392,7 @@ texture = ExtResource("14_qiilv")
 5:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3oash"]
-texture = ExtResource("15_bdjuu")
+texture = ExtResource("16_yhaix")
 margins = Vector2i(16, 0)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -439,7 +442,7 @@ texture_region_size = Vector2i(32, 32)
 8:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_us08a"]
-texture = ExtResource("16_j6067")
+texture = ExtResource("17_77fyx")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -463,13 +466,13 @@ sources/8 = SubResource("TileSetAtlasSource_3oash")
 sources/9 = SubResource("TileSetAtlasSource_us08a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo7qy"]
-size = Vector2(1147, 5)
+size = Vector2(1142, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvowj"]
 size = Vector2(129, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gecg"]
-size = Vector2(86, 126)
+size = Vector2(81, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylakg"]
 size = Vector2(5, 578)
@@ -522,37 +525,39 @@ size = Vector2(21, 64)
 [node name="BackGround" type="Sprite2D"]
 z_index = -6
 centered = false
-script = ExtResource("2_q60ld")
+script = ExtResource("1_5mm2j")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_6evbk")]
+[node name="Farmer" parent="." instance=ExtResource("2_wliib")]
 top_level = true
 position = Vector2(568, 319)
 collision_mask = 4
 
-[node name="Truck" parent="." instance=ExtResource("3_fij21")]
+[node name="Enemy_Basic" parent="." instance=ExtResource("3_yenew")]
+
+[node name="Truck" parent="." instance=ExtResource("3_k7gxy")]
 position = Vector2(1133, 315)
 collision_layer = 5
 
-[node name="CropPlot1" parent="." instance=ExtResource("3_jhsui")]
+[node name="CropPlot1" parent="." instance=ExtResource("4_jseu1")]
 position = Vector2(432, 248)
 index = 1
 
-[node name="CropPlot2" parent="." instance=ExtResource("3_jhsui")]
+[node name="CropPlot2" parent="." instance=ExtResource("4_jseu1")]
 position = Vector2(704, 248)
 index = 2
 
-[node name="CropPlot3" parent="." instance=ExtResource("3_jhsui")]
+[node name="CropPlot3" parent="." instance=ExtResource("4_jseu1")]
 position = Vector2(432, 408)
 index = 3
 
-[node name="CropPlot4" parent="." instance=ExtResource("3_jhsui")]
+[node name="CropPlot4" parent="." instance=ExtResource("4_jseu1")]
 position = Vector2(704, 408)
 index = 4
 
 [node name="SellArea" type="Area2D" parent="."]
 z_index = 1
 collision_layer = 2
-script = ExtResource("6_bl62t")
+script = ExtResource("5_3mgwj")
 
 [node name="Bin" type="CollisionShape2D" parent="SellArea"]
 position = Vector2(1038, 328)
@@ -563,7 +568,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="SeedArea" type="Area2D" parent="."]
-script = ExtResource("5_lfe0e")
+script = ExtResource("6_8limc")
 
 [node name="ColorRect" type="ColorRect" parent="SeedArea"]
 offset_left = 38.0
@@ -597,7 +602,7 @@ offset_right = 236.0
 offset_bottom = 69.0
 theme_override_colors/font_color = Color(0, 0.439216, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.101961, 0, 1)
-theme_override_fonts/font = ExtResource("7_lxima")
+theme_override_fonts/font = ExtResource("7_oqo4k")
 theme_override_font_sizes/font_size = 32
 text = "Money: 0"
 
@@ -608,7 +613,7 @@ offset_right = 1146.0
 offset_bottom = 70.0
 theme_override_colors/font_color = Color(0.388578, 0.369974, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.101961, 0, 1)
-theme_override_fonts/font = ExtResource("7_lxima")
+theme_override_fonts/font = ExtResource("7_oqo4k")
 theme_override_font_sizes/font_size = 32
 text = "Seed: 0"
 
@@ -619,7 +624,7 @@ offset_right = 712.0
 offset_bottom = 66.0
 theme_override_colors/font_color = Color(0.724169, 0.69149, 3.85046e-07, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_lxima")
+theme_override_fonts/font = ExtResource("7_oqo4k")
 theme_override_font_sizes/font_size = 32
 text = "Crops: 0"
 
@@ -649,11 +654,15 @@ layer_7/name = "Trees Front"
 layer_7/z_index = 10
 layer_7/tile_data = PackedInt32Array()
 
+[node name="Spawner" parent="." instance=ExtResource("19_5c48p")]
+
+[node name="spawner_manager" parent="." instance=ExtResource("20_bllxf")]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(573.5, 2.5)
+position = Vector2(576, 2.5)
 shape = SubResource("RectangleShape2D_mo7qy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -661,7 +670,7 @@ position = Vector2(181.5, 633)
 shape = SubResource("RectangleShape2D_fvowj")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1109, 311)
+position = Vector2(1106.5, 311)
 shape = SubResource("RectangleShape2D_6gecg")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
@@ -729,29 +738,29 @@ position = Vector2(1141.5, 451)
 shape = SubResource("RectangleShape2D_ms6cm")
 
 [connection signal="body_entered" from="CropPlot1" to="." method="_on_crop_plot_1_body_entered"]
-[connection signal="body_entered" from="CropPlot1" to="CharacterBody2D" method="_on_crop_plot_1_body_entered"]
+[connection signal="body_entered" from="CropPlot1" to="Farmer" method="_on_crop_plot_1_body_entered"]
 [connection signal="body_exited" from="CropPlot1" to="." method="_on_crop_plot_1_body_exited"]
-[connection signal="body_exited" from="CropPlot1" to="CharacterBody2D" method="_on_crop_plot_1_body_exited"]
+[connection signal="body_exited" from="CropPlot1" to="Farmer" method="_on_crop_plot_1_body_exited"]
 [connection signal="crop_gathered" from="CropPlot1" to="." method="_on_crop_plot_1_crop_gathered"]
-[connection signal="crop_gathered" from="CropPlot1" to="CharacterBody2D" method="_on_crop_plot_1_crop_gathered"]
+[connection signal="crop_gathered" from="CropPlot1" to="Farmer" method="_on_crop_plot_1_crop_gathered"]
 [connection signal="body_entered" from="CropPlot2" to="." method="_on_crop_plot_2_body_entered"]
-[connection signal="body_entered" from="CropPlot2" to="CharacterBody2D" method="_on_crop_plot_2_body_entered"]
+[connection signal="body_entered" from="CropPlot2" to="Farmer" method="_on_crop_plot_2_body_entered"]
 [connection signal="body_exited" from="CropPlot2" to="." method="_on_crop_plot_2_body_exited"]
-[connection signal="body_exited" from="CropPlot2" to="CharacterBody2D" method="_on_crop_plot_2_body_exited"]
+[connection signal="body_exited" from="CropPlot2" to="Farmer" method="_on_crop_plot_2_body_exited"]
 [connection signal="crop_gathered" from="CropPlot2" to="." method="_on_crop_plot_2_crop_gathered"]
-[connection signal="crop_gathered" from="CropPlot2" to="CharacterBody2D" method="_on_crop_plot_2_crop_gathered"]
+[connection signal="crop_gathered" from="CropPlot2" to="Farmer" method="_on_crop_plot_2_crop_gathered"]
 [connection signal="body_entered" from="CropPlot3" to="." method="_on_crop_plot_3_body_entered"]
-[connection signal="body_entered" from="CropPlot3" to="CharacterBody2D" method="_on_crop_plot_3_body_entered"]
+[connection signal="body_entered" from="CropPlot3" to="Farmer" method="_on_crop_plot_3_body_entered"]
 [connection signal="body_exited" from="CropPlot3" to="." method="_on_crop_plot_3_body_exited"]
-[connection signal="body_exited" from="CropPlot3" to="CharacterBody2D" method="_on_crop_plot_3_body_exited"]
+[connection signal="body_exited" from="CropPlot3" to="Farmer" method="_on_crop_plot_3_body_exited"]
 [connection signal="crop_gathered" from="CropPlot3" to="." method="_on_crop_plot_3_crop_gathered"]
-[connection signal="crop_gathered" from="CropPlot3" to="CharacterBody2D" method="_on_crop_plot_3_crop_gathered"]
+[connection signal="crop_gathered" from="CropPlot3" to="Farmer" method="_on_crop_plot_3_crop_gathered"]
 [connection signal="body_entered" from="CropPlot4" to="." method="_on_crop_plot_4_body_entered"]
-[connection signal="body_entered" from="CropPlot4" to="CharacterBody2D" method="_on_crop_plot_4_body_entered"]
+[connection signal="body_entered" from="CropPlot4" to="Farmer" method="_on_crop_plot_4_body_entered"]
 [connection signal="body_exited" from="CropPlot4" to="." method="_on_crop_plot_4_body_exited"]
-[connection signal="body_exited" from="CropPlot4" to="CharacterBody2D" method="_on_crop_plot_4_body_exited"]
+[connection signal="body_exited" from="CropPlot4" to="Farmer" method="_on_crop_plot_4_body_exited"]
 [connection signal="crop_gathered" from="CropPlot4" to="." method="_on_crop_plot_4_crop_gathered"]
-[connection signal="crop_gathered" from="CropPlot4" to="CharacterBody2D" method="_on_crop_plot_4_crop_gathered"]
+[connection signal="crop_gathered" from="CropPlot4" to="Farmer" method="_on_crop_plot_4_crop_gathered"]
 [connection signal="body_entered" from="SellArea" to="." method="_on_sell_area_body_entered"]
 [connection signal="body_entered" from="SellArea" to="SellArea" method="_on_body_entered"]
 [connection signal="body_exited" from="SellArea" to="." method="_on_sell_area_body_exited"]

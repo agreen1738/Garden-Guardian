@@ -1,6 +1,6 @@
 [gd_scene load_steps=62 format=3 uid="uid://c7kb7wpe8w2s3"]
 
-[ext_resource type="Script" path="res://FarmerTest.gd" id="1_qndbs"]
+[ext_resource type="Script" path="res://Assets/Scripts/FarmerTest.gd" id="1_qndbs"]
 [ext_resource type="Texture2D" uid="uid://dmsgm8m2vvcq8" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer.png" id="2_ksf6g"]
 [ext_resource type="Texture2D" uid="uid://dy1kp4tr3folt" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Farmer Extra.png" id="3_0rutq"]
 

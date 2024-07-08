@@ -34,8 +34,9 @@ func _physics(_delta):
 	var onSeed = false
 
 func _on_sell_area_has_crop():
-	onSell = true
-	$Truck/AnimatedSprite2D.play("Idle Highlight")
+	if myCrop != 0:
+		onSell = true
+		$Truck/AnimatedSprite2D.play("Idle Highlight")
 
 func _on_seed_area_get_seed():
 	onSeed = true
