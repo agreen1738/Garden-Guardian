@@ -140,8 +140,8 @@ script = ExtResource("1_874p6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_24yqe")
 animation = &"run"
-frame = 8
-frame_progress = 0.980687
+frame = 2
+frame_progress = 0.91169
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cy10mwhwsb8sg"]
+[gd_scene load_steps=54 format=3 uid="uid://cy10mwhwsb8sg"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main.gd" id="1_5mm2j"]
 [ext_resource type="PackedScene" uid="uid://c7kb7wpe8w2s3" path="res://Assets/Prefabs/Farmer.tscn" id="2_wliib"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://0k88wgttxfla" path="res://Assets/Prefabs/spawner_manager.tscn" id="20_bllxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_242r1"]
-size = Vector2(56, 90)
+size = Vector2(58, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ane7b"]
 size = Vector2(65, 130)
@@ -472,7 +472,7 @@ size = Vector2(1142, 5)
 size = Vector2(129, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gecg"]
-size = Vector2(81, 126)
+size = Vector2(79, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylakg"]
 size = Vector2(5, 578)
@@ -522,6 +522,9 @@ size = Vector2(37, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms6cm"]
 size = Vector2(21, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp2fa"]
+size = Vector2(22, 68)
+
 [node name="BackGround" type="Sprite2D"]
 z_index = -6
 centered = false
@@ -533,6 +536,7 @@ position = Vector2(568, 319)
 collision_mask = 4
 
 [node name="Enemy_Basic" parent="." instance=ExtResource("3_yenew")]
+visible = false
 
 [node name="Truck" parent="." instance=ExtResource("3_k7gxy")]
 position = Vector2(1133, 315)
@@ -560,7 +564,7 @@ collision_layer = 2
 script = ExtResource("5_3mgwj")
 
 [node name="Bin" type="CollisionShape2D" parent="SellArea"]
-position = Vector2(1038, 328)
+position = Vector2(1039, 328)
 shape = SubResource("RectangleShape2D_242r1")
 
 [node name="checkBox" type="Timer" parent="SellArea"]
@@ -670,7 +674,7 @@ position = Vector2(181.5, 633)
 shape = SubResource("RectangleShape2D_fvowj")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1106.5, 311)
+position = Vector2(1107.5, 309)
 shape = SubResource("RectangleShape2D_6gecg")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
@@ -736,6 +740,10 @@ shape = SubResource("RectangleShape2D_os0rd")
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1141.5, 451)
 shape = SubResource("RectangleShape2D_ms6cm")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1057, 278)
+shape = SubResource("RectangleShape2D_dp2fa")
 
 [connection signal="body_entered" from="CropPlot1" to="." method="_on_crop_plot_1_body_entered"]
 [connection signal="body_entered" from="CropPlot1" to="Farmer" method="_on_crop_plot_1_body_entered"]
